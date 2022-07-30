@@ -30,3 +30,6 @@ override.tf.json
 
 # Exclude infracost
 .infracost
+
+.vscode
+*.code-workspace
