@@ -31,7 +31,8 @@ provider "digitalocean" {
 }
 
 module "vpc" {
-  source   = "../../../modules/terraform-module-digitalocean-vpc/"
+  source   = "brucellino/vpc/digitalocean"
+  version  = "1.0.0"
   vpc_name = var.vpc
   project  = var.project
 }
