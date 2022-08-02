@@ -23,6 +23,7 @@ provider "vault" {
 data "vault_generic_secret" "do_token" {
   path = "kv/do"
 }
+
 provider "digitalocean" {
   token             = data.vault_generic_secret.do_token.data["token"]
   spaces_access_id  = data.vault_generic_secret.do_token.data["access_key_hashi_at_home"]
@@ -31,18 +32,16 @@ provider "digitalocean" {
 
 module "vpc" {
   source   = "../../../modules/terraform-module-digitalocean-vpc/"
-  vpc_name = "hashi"
-  project = {
-    name        = "Hashi stuff"
-    description = "A hashi cluster (Vault, Consul, Vault) with some nodes"
-    purpose     = "Product development"
-    environment = "development"
-  }
+  vpc_name = var.vpc
+  project  = var.project
 }
 
-module "vault" {
-  source       = "../../../modules/terraform-module-digitalocean-vault/"
-  depends_on   = [module.vpc]
-  vpc_name     = "hashi"
-  project_name = "Hashi stuff"
+module "consul" {
+  source                   = "brucellino/consul/digitalocean"
+  version                  = "1.0.4"
+  vpc                      = var.vpc
+  depends_on               = [module.vpc]
+  project_name             = var.project.name
+  servers                  = 3
+  ssh_inbound_source_cidrs = ["130.25.160.46"]
 }
