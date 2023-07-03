@@ -39,7 +39,7 @@ module "vpc" {
 
 module "consul" {
   source                   = "brucellino/consul/digitalocean"
-  version                  = "1.0.4"
+  version                  = "1.0.7"
   vpc                      = var.vpc
   depends_on               = [module.vpc]
   project_name             = var.project.name
