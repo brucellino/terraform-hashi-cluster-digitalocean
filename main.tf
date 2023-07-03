@@ -32,7 +32,7 @@ provider "digitalocean" {
 
 module "vpc" {
   source   = "brucellino/vpc/digitalocean"
-  version  = "1.0.0"
+  version  = "1.0.3"
   vpc_name = var.vpc
   project  = var.project
 }
