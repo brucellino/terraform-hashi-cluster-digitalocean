@@ -1,3 +1,13 @@
+variable "do_vault_mount" {
+  type        = string
+  default     = "digitalocean"
+  description = "Path of the mount in Vault where the DigitalOCean terraform token is kept."
+}
+variable "cf_vault_mount" {
+  type        = string
+  default     = "cloudflare"
+  description = "Path of the mount in Vault where cloudflare terraform token is kept."
+}
 variable "domain" {
   type        = string
   description = "Domain we are deploying into"
