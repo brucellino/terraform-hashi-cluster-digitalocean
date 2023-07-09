@@ -29,3 +29,4 @@ repos:
       - id: detect-secrets
         args:
           - --baseline .secrets.baseline
+# ci:
