@@ -59,11 +59,12 @@ module "vpc" {
 }
 
 module "vault" {
-  depends_on   = [module.vpc]
-  source       = "brucellino/vault/digitalocean"
-  version      = "1.2.0"
-  vpc_name     = var.vpc
-  project_name = var.project.name
+  depends_on               = [module.vpc]
+  source                   = "brucellino/vault/digitalocean"
+  version                  = "1.2.1"
+  vpc_name                 = var.vpc
+  project_name             = var.project.name
+  ssh_inbound_source_cidrs = ["2.38.151.8"]
 }
 
 # module "consul" {
