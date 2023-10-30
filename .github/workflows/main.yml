@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Get Terraform
-        run: curl -fSL https://releases.hashicorp.com/terraform/1.6.2/terraform_1.6.2_linux_arm64.zip | gunzip -> terraform ; chmod u+x terraform
+        run: curl -fSL https://releases.hashicorp.com/terraform/1.6.2/terraform_1.6.2_linux_amd64.zip | gunzip -> terraform ; chmod u+x terraform
       - name: Check terraform
         run: ./terraform init -backend=false
       - name: Validate Terraform
