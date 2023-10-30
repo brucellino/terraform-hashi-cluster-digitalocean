@@ -6,6 +6,7 @@ updates:
     package-ecosystem: "terraform"
     rebase-strategy: auto
     schedule:
+      interval: "weekly"
       time: "05:00"
       timezone: "UTC"
   - directory: /
