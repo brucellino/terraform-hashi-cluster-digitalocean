@@ -1,0 +1,25 @@
+---
+name: main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+      branches:
+        - main
+
+jobs:
+  main:
+    name: main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get Terraform
+        run: curl -fSL https://releases.hashicorp.com/terraform/1.6.2/terraform_1.6.2_linux_arm64.zip | gunzip -> terraform ; chmod u+x terraform
+      - name: Check terraform
+        run: ./terraform init -backend=false
+      - name: Validate Terraform
+        run: ./terraform validate
