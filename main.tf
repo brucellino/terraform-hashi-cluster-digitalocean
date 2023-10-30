@@ -7,19 +7,19 @@ terraform {
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = "2.28.1"
+      version = "~> 2"
     }
     vault = {
       source  = "hashicorp/vault"
-      version = "3.17.0"
+      version = "~> 3"
     }
     http = {
       source  = "hashicorp/http"
-      version = "3.2.1"
+      version = "~> 3"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 4.9"
+      version = "~> 4"
     }
     random = {
       source  = "hashicorp/random"
@@ -59,12 +59,13 @@ module "vpc" {
 }
 
 module "vault" {
-  depends_on               = [module.vpc]
-  source                   = "brucellino/vault/digitalocean"
-  version                  = "1.2.1"
-  vpc_name                 = var.vpc
-  project_name             = var.project.name
-  ssh_inbound_source_cidrs = ["2.38.151.8"]
+  depends_on    = [module.vpc]
+  source        = "brucellino/vault/digitalocean"
+  version       = "1.2.2"
+  vpc_name      = var.vpc
+  project_name  = var.project.name
+  vault_version = "1.15.1"
+  # ssh_inbound_source_cidrs = ["2.38.151.8"]
 }
 
 # module "consul" {
