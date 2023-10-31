@@ -59,21 +59,23 @@ module "vpc" {
 }
 
 module "vault" {
-  depends_on    = [module.vpc]
-  source        = "brucellino/vault/digitalocean"
-  version       = "2.0.0"
-  vpc_name      = var.vpc
-  project_name  = var.project.name
-  vault_version = "1.15.1"
+  depends_on       = [module.vpc]
+  source           = "brucellino/vault/digitalocean"
+  version          = "2.0.0"
+  vpc_name         = var.vpc
+  project_name     = var.project.name
+  vault_version    = "1.15.1"
+  region           = "ams3"
+  region_from_data = false
   # ssh_inbound_source_cidrs = ["2.38.151.8"]
 }
 
 # module "consul" {
-#   source  = "brucellino/consul/digitalocean"
-#   version = "1.0.7"
-#   # vpc                      = var.vpc
-#   depends_on               = [module.vpc]
-#   project_name             = var.project.name
-#   servers                  = 3
-#   ssh_inbound_source_cidrs = ["130.25.160.46"]
+#   source       = "brucellino/consul/digitalocean"
+#   version      = "1.0.7"
+#   vpc_name     = var.vpc
+#   depends_on   = [module.vpc]
+#   project_name = var.project.name
+#   servers      = 3
+#   # ssh_inbound_source_cidrs = ["130.25.160.46"]
 # }
