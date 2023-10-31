@@ -61,7 +61,7 @@ module "vpc" {
 module "vault" {
   depends_on    = [module.vpc]
   source        = "brucellino/vault/digitalocean"
-  version       = "1.2.2"
+  version       = "2.0.0"
   vpc_name      = var.vpc
   project_name  = var.project.name
   vault_version = "1.15.1"
