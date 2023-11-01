@@ -12,20 +12,18 @@ terraform {
       source  = "hashicorp/vault"
       version = "~> 3"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = "~> 3"
-    }
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "~> 4"
     }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3"
+    consul = {
+      source  = "hashicorp/consul"
+      version = "~> 2"
     }
   }
 }
+
+provider "consul" {}
 
 variable "do_vault_mount" {
   description = "Path to the Vault mount for the Digital Ocean Secrets"
@@ -59,6 +57,13 @@ provider "digitalocean" {
   token             = data.vault_kv_secret_v2.do.data["terraform"]
   spaces_access_id  = data.vault_kv_secret_v2.do.data["spaces_key"]
   spaces_secret_key = data.vault_kv_secret_v2.do.data["spaces_secret"]
+}
+
+data "consul_keys" "config" {
+  key {
+    path = "do"
+    name = "hashi-cluster"
+  }
 }
 
 module "vpc" {
