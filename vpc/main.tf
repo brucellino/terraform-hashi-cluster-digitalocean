@@ -12,10 +12,6 @@ terraform {
       source  = "hashicorp/vault"
       version = "~> 3"
     }
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-      version = "~> 4"
-    }
     consul = {
       source  = "hashicorp/consul"
       version = "~> 2"
@@ -32,11 +28,11 @@ variable "do_vault_mount" {
   sensitive   = false
 }
 
-variable "cf_vault_mount" {
-  description = "Path to Vault mount for the Cloudflare secrets."
-  type        = string
-  default     = "cloudflare"
-}
+# variable "cf_vault_mount" {
+#   description = "Path to Vault mount for the Cloudflare secrets."
+#   type        = string
+#   default     = "cloudflare"
+# }
 
 provider "vault" {}
 
@@ -45,13 +41,13 @@ data "vault_kv_secret_v2" "do" {
   name  = "tokens"
 }
 
-data "vault_kv_secret_v2" "cf" {
-  mount = var.cf_vault_mount
-  name  = "terraform"
-}
-provider "cloudflare" {
-  api_token = data.vault_kv_secret_v2.cf.data["api_token"]
-}
+# data "vault_kv_secret_v2" "cf" {
+#   mount = var.cf_vault_mount
+#   name  = "terraform"
+# }
+# provider "cloudflare" {
+#   api_token = data.vault_kv_secret_v2.cf.data["api_token"]
+# }
 
 provider "digitalocean" {
   token             = data.vault_kv_secret_v2.do.data["terraform"]
