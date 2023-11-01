@@ -53,5 +53,5 @@ module "vpc" {
   version    = "1.0.3"
   vpc_name   = yamldecode(data.consul_keys.config.var.config).vpc_name
   project    = yamldecode(data.consul_keys.config.var.config).project
-  vpc_region = "ams3"
+  vpc_region = yamldecode(data.consul_keys.config.var.config).region
 }
