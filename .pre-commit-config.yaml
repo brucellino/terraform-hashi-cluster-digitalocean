@@ -34,4 +34,5 @@ repos:
     rev: 0.27.0
     hooks:
       - id: check-github-workflows
+      - id: check-renovate
 # ci:
