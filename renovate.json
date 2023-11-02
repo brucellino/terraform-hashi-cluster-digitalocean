@@ -8,6 +8,13 @@
     {
       "matchUpdateTypes": ["bump", "digest", "pin", "patch"]
     }
-  ]
+  ],
+  "terraform": {
+    "commitMessageTopic": "Terraform {{depName}}",
+    "fileMatch": [
+      "\\.tf$"
+    ],
+    "pinDigests": false
+  }
 
 }
