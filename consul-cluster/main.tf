@@ -6,7 +6,7 @@ terraform {
   required_providers {
     consul = {
       source  = "hashicorp/consul"
-      version = "~> 2"
+      version = ">= 2"
     }
     digitalocean = {
       source  = "digitalocean/digitalocean"
