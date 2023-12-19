@@ -19,7 +19,7 @@ terraform {
     }
     http = {
       source  = "hashicorp/http"
-      version = "~> 3"
+      version = ">= 3"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
