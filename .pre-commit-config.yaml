@@ -10,7 +10,7 @@ repos:
       - id: check-json
       - id: check-added-large-files
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.5
+    rev: v1.88.0
     hooks:
       - id: infracost_breakdown
         args:
@@ -19,7 +19,7 @@ repos:
       - id: terraform_validate
       - id: terraform_tfsec
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.5.0
+    rev: v9.13.0
     hooks:
       - id: commitlint
         stages: [commit-msg]
@@ -31,8 +31,9 @@ repos:
         args:
           - --baseline .secrets.baseline
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.27.0
+    rev: 0.28.0
     hooks:
       - id: check-github-workflows
       - id: check-renovate
-# ci:
+ci:
+  skip: []
