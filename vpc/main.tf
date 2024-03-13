@@ -10,7 +10,7 @@ terraform {
     }
     vault = {
       source  = "hashicorp/vault"
-      version = "~> 3"
+      version = ">= 3"
     }
     consul = {
       source  = "hashicorp/consul"
