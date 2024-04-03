@@ -50,7 +50,7 @@ data "consul_keys" "config" {
 
 module "vpc" {
   source     = "brucellino/vpc/digitalocean"
-  version    = "1.0.3"
+  version    = "2.0.0"
   vpc_name   = yamldecode(data.consul_keys.config.var.config).vpc_name
   project    = yamldecode(data.consul_keys.config.var.config).project
   vpc_region = yamldecode(data.consul_keys.config.var.config).region
