@@ -85,7 +85,7 @@ data "digitalocean_project" "selected" {
 module "vault" {
   instances        = 1
   source           = "brucellino/vault/digitalocean"
-  version          = "3.0.2"
+  version          = "4.0.1"
   vpc_name         = data.digitalocean_vpc.selected.name
   project_name     = data.digitalocean_project.selected.name
   vault_version    = "1.15.1"
