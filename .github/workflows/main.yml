@@ -21,9 +21,9 @@ jobs:
         with:
           install: true
       - name: Check terraform
-        run: ./terraform init -backend=false
+        run: terraform init -backend=false
       - name: Validate Terraform
-        run: ./terraform validate
+        run: terraform validate
   release:
     needs:
       - main
