@@ -28,5 +28,17 @@ variable "project" {
     description = "Hashi cluster"
     purpose     = "Personal"
     environment = "development"
+    is_default  = false
   }
+}
+
+variable "source_cidrs" {
+  type        = list(string)
+  description = "The list of CIDR blocks that are allowed to access the cluster"
+  default     = ["0.0.0.0/0"]
+}
+
+variable "tailscale_token" {
+  type        = string
+  description = "The Tailscale API token"
 }
