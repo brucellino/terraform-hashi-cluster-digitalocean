@@ -15,9 +15,12 @@ variable "domain" {
 }
 
 variable "vpc" {
-  type        = string
-  description = "Name of the DigitalOcean VPC"
-  default     = "hashi"
+  type        = map(string)
+  description = "VPC details for  for Hashiplatform"
+  default = {
+    name        = "hashi"
+    description = "Hashi VPC"
+  }
 }
 
 variable "project" {
@@ -36,9 +39,4 @@ variable "source_cidrs" {
   type        = list(string)
   description = "The list of CIDR blocks that are allowed to access the cluster"
   default     = ["0.0.0.0/0"]
-}
-
-variable "tailscale_token" {
-  type        = string
-  description = "The Tailscale API token"
 }
