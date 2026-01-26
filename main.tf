@@ -44,7 +44,7 @@ module "vault" {
   # Creates a vault that must be manually initialized and unsealed
 
   source                   = "brucellino/vault/digitalocean"
-  version                  = "~> 3"
+  version                  = "~> 4"
   count                    = 1
   instances                = 3
   create_instances         = true
@@ -54,8 +54,6 @@ module "vault" {
   vpc_name                 = var.vpc.name
   depends_on               = [module.vpc, time_sleep.wait_after_destroy]
 }
-
-
 
 # Deploy Consul into the Vault cluster
 # resource "ansible_host" "droplets" {
