@@ -1,6 +1,6 @@
 [tools]
 terraform = "1.14.3"
-prek = "0.4.13"
+prek = "0.5.4"
 
 [env]
 # Autoconfigure venv
